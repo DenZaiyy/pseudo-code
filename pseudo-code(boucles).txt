@@ -4,11 +4,27 @@ Ecrire un algorithme qui demande à l'utilisateur un nombre compris entre 1 et 3
 variable nombre en entier
 
 DEBUT
+    nombre ← 0
     Ecrire "Donnez un nombre"
-    Lire nombre
 
-    TANT QUE (nombre >=1 OU nombre <=3) ALORS
-        Ecrire "Vous avez le nombre" nombre
+    TANT QUE (nombre < 1 OU nombre > 3) ALORS
+        Lire nombre
+        SI(nombre > 1 ET nombre < 3) ALORS
+            Ecrire "Bravo"
+        FIN SI
+    FIN TANT QUE
+FIN
+
+variante qui affiche l'erreur
+
+DEBUT
+    nombre ← 0
+    Ecrire "Donnez un nombre"
+    TANT QUE (nombre < 1 OU nombre > 3) ALORS
+        Lire nombre
+        SI (nombre < 1 OU nombre > 3) ALORS
+            Ecrire "Erreur, donnez un nombre"
+        FIN SI
     FIN TANT QUE
 FIN
 
@@ -20,10 +36,12 @@ Ecrire un algorithme qui demande un nombre compris entre 10 et 20, jusqu'à ce q
 variable nombre en entier
 
 DEBUT
+    nombre ← 0
     Ecrire "Donnez un nombre"
-    Lire nombre
 
-    TANT QUE (nombre <=20 ET nombre >=10) ALORS
+    TANT QUE (nombre <= 10 OU nombre >= 20) ALORS
+        Lire nombre
+
         SI(nombre > 20) ALORS
             Ecrire "Plus petit !"
         SINON SI(nombre < 10) ALORS
@@ -127,4 +145,3 @@ DEBUT
     resultat = 1
     POUR(i=1; i < 20; i++) ALORS
         Ecrire "Entrez le nombre numéro " i
-        
