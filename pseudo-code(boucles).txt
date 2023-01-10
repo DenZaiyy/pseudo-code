@@ -1,0 +1,130 @@
+Exercice 1:
+Ecrire un algorithme qui demande à l'utilisateur un nombre compris entre 1 et 3 jusqu'à ce que la réponse convienne.
+
+variable nombre en entier
+
+DEBUT
+    Ecrire "Donnez un nombre"
+    Lire nombre
+
+    TANT QUE (nombre >=1 OU nombre <=3) ALORS
+        Ecrire "Vous avez le nombre" nombre
+    FIN TANT QUE
+FIN
+
+
+
+Exercice 2:
+Ecrire un algorithme qui demande un nombre compris entre 10 et 20, jusqu'à ce que la réponse convienne. En cas de réponse supérieur à 20, on fera apparaître un message : "Plus petit !", et inversement, "Plus grand !" si le nombre est inférieur à 10
+
+variable nombre en entier
+
+DEBUT
+    Ecrire "Donnez un nombre"
+    Lire nombre
+
+    TANT QUE (nombre <=20 ET nombre >=10) ALORS
+        SI(nombre > 20) ALORS
+            Ecrire "Plus petit !"
+        SINON SI(nombre < 10) ALORS
+            Ecrire "Plus grand !"
+        SINON
+            Ecrire "Bonne réponse"
+        FIN SI
+    FIN TANT QUE
+FIN
+
+
+
+Exercice 3: Ecrire un algorithme qui demande un nombre de départ, et qui ensuite affiche les dix nombres suivants. Par exemple, si l'utilisateur entre le nombre 17, le programme affichera les nombres de 18 à 27.
+
+variable nombre, i en entier
+
+DEBUT
+    Ecrire "Donnez un nombre"
+    Lire nombre
+
+    POUR(i=1; i=10) ALORS
+        Ecrire nombre + i
+        i++
+FIN
+
+
+
+Exercice 4: Ecrire un algorithme qui demande un nombre de départ, et qui ensuite écrit la table de multiplication de ce nombre, présentée comme suit (cas où l'utilisateur entre le nombre 7) :
+Table de 7 :
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+...
+7 x 10 = 70
+
+variable nombre, i en entier
+
+DEBUT
+    Ecrire "Donnez un nombre"
+    Lire nombre
+    Ecrire "Table de " nombre
+
+    POUR(i=1; i<=10; i++) ALORS
+        Ecrire nombre " x " i " = " nombre * i
+    FIN POUR
+FIN
+
+
+
+Exercice 5: Ecrire un algorithme qui demande un nombre de départ, et qui calcule la somme des entiers jusqu'à ce nombre. Par exemple, si l'on entre 5, le programme doit calculer:
+1 + 2 + 3 + 4 + 5 = 15
+NB: on souhaite afficher uniquement le résultat, pas la décomposition du calcul.
+
+variable nombre, i, resultat en entier
+
+DEBUT
+    Ecrire "Donnez un nombre"
+    Lire nombre
+    resultat=1
+    POUR(i=1; nombre=i; i++) ALORS
+        resultat = resultat + i
+        Ecrire resultat
+    FIN POUR
+FIN
+
+
+Exercice 6: Ecrire  un algorithme qui demande un nombre de départ, et qui calcule sa factorielle.
+NB : la factorielle de 8, notée 8!, vaut
+1 x 2 x 3 x 4 x 5 x 6 x 7 x 8
+
+variable nombre, i, resultat en entier
+
+DEBUT
+    Ecrire "Donnez un nombre"
+    Lire nombre
+    resultat = 1
+    POUR(i=1; i=nombre) ALORS
+        resultat = resultat * i
+        Ecrire resultat
+        i++
+    FIN POUR
+FIN
+
+
+
+Exercice 7:
+Ecrire un algorithme qui demande successivement 20 nombres à l'utilisateur, et qui lui dise ensuite quel était le plus grand parmi ces 20 nombres:
+Entrez le nombre numéro 1: 12
+Entrez le nombre numéro 2: 14
+ect.
+Entrez le nombre numéro 20: 6
+
+Le plus grand de ces nombres est : 14
+
+Modifiez ensuite l'algorithme pour que le programme affiche de surcroît en quelle position avait été saisie ce nombre:
+C'était le numéro 2
+
+variable nombre, i, resultat en entier
+
+DEBUT
+    resultat = 1
+    POUR(i=1; i < 20; i++) ALORS
+        Ecrire "Entrez le nombre numéro " i
+        
