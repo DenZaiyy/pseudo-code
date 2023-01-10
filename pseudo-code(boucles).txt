@@ -100,11 +100,11 @@ variable nombre, i, resultat en entier
 DEBUT
     Ecrire "Donnez un nombre"
     Lire nombre
-    resultat=1
+    resultat = 0
     POUR(i=1; nombre=i; i++) ALORS
         resultat = resultat + i
-        Ecrire resultat
     FIN POUR
+    Ecrire resultat
 FIN
 
 
