@@ -1,0 +1,47 @@
+Problématique
+    Vous êtes rattaché au service paie de votre société. Afin d’optimiser le calcul du salaire des salariés, il
+    vous est demandé de programmer une automatisation de ce traitement.
+    Après une analyse des besoins, vous êtes parvenu à la problématique suivante :
+    « Calculer et afficher le salaire d’un commercial suivant ses primes de transport et de CA, ainsi que son
+    salaire de base.»
+
+Données connues
+    Pour réaliser ce programme vous avez à votre disposition les éléments suivants:
+        Prime sur CA : 2% du CA si le CA est inférieur à 50 000€
+        Prime sur CA : 4% du CA si le CA est supérieur à 50 000€
+        Remboursement kilométrique : 0.26€
+
+Travail à réaliser
+    Concevoir un programme permettant de calculer et d’afficher ce montant.
+
+var salaireBase, salaireCommercial, chiffreAffaire en entier
+var kilometre, prixKilometrique en decimal
+
+DEBUT
+    salaireBase ← 0
+    salaireCommercial ← 0
+    chiffreAffaire ← 0
+    kilometre ← 0
+    prixKilometrique ← 0.26
+
+    Ecrire "Donnez votre salaire de base"
+    Lire salaireBase
+
+    Ecrire "Donnez le nombre de km parcouru"
+    Lire kilometre
+
+    Ecrire "Donnez le chiffre d'affaire"
+    Lire chiffreAffaire
+
+    SI (kilometre > 0) ALORS
+        salaireCommercial = salaireBase + (prixKilometrique * kilometre)
+    FIN SI
+
+    SI (chiffreAffaire < 50000) ALORS
+        salaireCommercial = salaireCommercial + ((2 * chiffreAffaire) / 100)
+    SINON SI (chiffreAffaire > 50000) ALORS
+        salaireCommercial = salaireCommercial + ((4 * chiffreAffaire) / 100)
+    FIN SI
+
+    Ecrire "Votre salaire est de " salaireCommercial " euros"
+FIN
