@@ -62,7 +62,7 @@ DEBUT
     Ecrire "Donnez un nombre"
     Lire nombre
 
-    POUR(i=1; i=10) ALORS
+    POUR(i←1; i←10) ALORS
         Ecrire nombre + i
         i++
 FIN
@@ -84,7 +84,7 @@ DEBUT
     Lire nombre
     Ecrire "Table de " nombre
 
-    POUR(i=1; i<=10; i++) ALORS
+    POUR(i←1; i<=10; i++) ALORS
         Ecrire nombre " x " i " = " nombre * i
     FIN POUR
 FIN
@@ -100,9 +100,9 @@ variable nombre, i, resultat en entier
 DEBUT
     Ecrire "Donnez un nombre"
     Lire nombre
-    resultat = 0
-    POUR(i=1; nombre=i; i++) ALORS
-        resultat = resultat + i
+    resultat ← 0
+    POUR(i←1; nombre←i; i++) ALORS
+        resultat ← resultat + i
     FIN POUR
     Ecrire resultat
 FIN
@@ -117,12 +117,12 @@ variable nombre, i, resultat en entier
 DEBUT
     Ecrire "Donnez un nombre"
     Lire nombre
-    resultat = 1
-    POUR(i=1; i=nombre) ALORS
-        resultat = resultat * i
-        Ecrire resultat
+    resultat ← 1
+    POUR(i←1; i←nombre) ALORS
+        resultat ← resultat * i
         i++
     FIN POUR
+    Ecrire "La factorielle de " nb " est " resultat
 FIN
 
 
@@ -139,9 +139,86 @@ Le plus grand de ces nombres est : 14
 Modifiez ensuite l'algorithme pour que le programme affiche de surcroît en quelle position avait été saisie ce nombre:
 C'était le numéro 2
 
+variable nombre, i, nombreMax en entier
+
+DEBUT
+    nombreMax ← 0
+    POUR(i←1; i <= 20; i++) ALORS
+        Ecrire "Entrez le nombre numéro " i
+        Lire nombre
+        SI(nombre > nombreMax) ALORS
+            nombreMax ← nombre
+        FIN SI
+    FIN POUR
+    Ecrire "Le plus grand de ces nombres est : " nombreMax
+FIN
+
+variable nombre, i, nombreMax, position en entier
+DEBUT
+    nombreMax ← 0
+    position ← 0
+    POUR(i←1; i <= 20; i++) ALORS
+        Ecrire "Entrez le nombre numéro " i
+        Lire nombre
+        SI(nombre > nombreMax) ALORS
+            nombreMax ← nombre
+            position ← i
+        FIN SI
+    FIN POUR
+    Ecrire "Le plus grand de ces nombres est : " nombreMax ", c'était le nombre numéro " position
+FIN
+
+
+
+Exercice 8: Réécrire l'algorithme précédent, mais cette fois-ci on ne connaît pas d'avance combien d'utilisateur souhaite saisir de nombres. La saisie des nombres s'arrête lorsque l'utilisateur entre un zéro.
+
 variable nombre, i, resultat en entier
 
 DEBUT
-    resultat = 1
-    POUR(i=1; i < 20; i++) ALORS
-        Ecrire "Entrez le nombre numéro " i
+    resultat ← 0
+    TANT QUE(nombre != 0) ALORS
+        Ecrire "Entrez un nombre"
+        Lire nombre
+        SI(nombre > resultat) ALORS
+            resultat ← nombre
+        FIN SI
+    FIN TANT QUE
+    Ecrire "Le plus grand de ces nombres est : " resultat
+FIN
+
+
+
+Exercice 9: 
+Lire la suite des prix (en euros entiers et terminé par zéro) des achats d'un client. 
+Calculer la somme qu'il doit, lire la somme qu'il paye, et simuler la remise de la monnaie en affichant les textes "10 Euros", "5 Euros" et "1 Euro" autant de fois qu'il y a de coupures de chaque sorte à rendre.
+
+
+variable prix, total, paiement, rendu, billet_20, billet_10, billet_5, piece_2, piece_1 en entier
+
+DEBUT
+    billet_20 ← 0
+    billet_10 ← 0
+    billet_5 ← 0
+    piece_2 ← 0
+    piece_1 ← 0
+
+    Ecrire "Entrez le prix du produit"
+    Lire prix
+
+    TANT QUE (prix != 0) ALORS
+        total += prix
+    FIN TANT QUE
+
+    Ecrire "Vous devez la somme de " total " euros"
+
+    Ecrire "Somme payer"
+    Lire paiement
+
+    rendu ← paiement - total
+    
+    TANT QUE(rendu > 20) ALORS
+        rendu ← rendu - 20
+
+
+
+
