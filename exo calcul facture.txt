@@ -19,31 +19,70 @@ Données connues
 Travail à réaliser
     Concevoir un programme permettant de calculer et d’afficher ces montants
 
-var quantite, prixUnitaire, montantBrut, tauxRemise, fraisLivraison, montantNetHT, montantTTC, montantNET en entier
-var montantTVA en decimal
-var codeLivraison en string
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Variables :
+
+var bool_remise en booleen
+var montant_remise en simple
+var montant_HT en simple
+var quantite en entier
+var montant_livraison en entier
+var montant_total_HT en simple <- 0
+var montant_TTC en simple
+var montant_TVA en simple
+var montant_NET en simple
+var montant_NET_HT en simple
+var code_livraison en string
+
+Constantes :
+
+const taux_remise en numerique <- 0.10
+const taux_tva en numerique <- 0.196
+const frais_code en entier (1 à 4)
+    frais_code(1) <- 10
+    frais_code(2) <- 20
+    frais_code(3) <- 30
+    frais_code(4) <- 0
 
 DEBUT
-    montantTVA ← 19.6
-    tauxRemise ← 10
-    codeLivraison ← ""
 
-    Ecrire "Donnez la quantité d'article"
-    Lire quantite
+    Ecrire "Donnez le prix d'article"
+    Lire montant_HT
+        
+    TANT QUE (montant_HT != 0) ALORS
+        Ecrire "Donnez la quantité d'article"
+        Lire quantite
 
-    Ecrire "Donnez le prix unitaire"
-    Lire prixUnitaire
+        montant_total_HT <- montant_total_HT + (montant_HT * quantite)
+        
+        Ecrire "Donnez le prix d'article"
+        Lire montant_HT
+    FIN TANT QUE
+    
+    Ecrire "Y'a t-il une remise?"
+    Lire bool_remise
 
-    SI (codeLivraison == "code 1") ALORS
-        fraisLivraison = 10
-    SINON SI(codeLivraison == "code 2") ALORS
-        fraisLivraison = 20
-    SINON SI(codeLivraison == "code 3") ALORS
-        fraisLivraison = 30
-    SINON SI(codeLivraison == "code 4") ALORS
-        fraisLivraison = 0
+    SI(bool_remise = true)ALORS
+        montant_remise <- montant_total_HT * taux_remise
+        montant_TTC += montant_remise
     SINON
-        Ecrire "Le code ne correspond pas"
+        montant_remise <- 0
     FIN SI
 
-    Ecrire "Votre article est afficher à " prixUnitaire " €, vous en voulez " quantite ", 
+    Ecrire "Quel est le code de livraison"
+    Lire code_livraison
+
+    montant_livraison <- frais_code(code_livraison)
+    montant_NET_HT <- montant_total_HT - montant_remise
+    montant_TVA <- montant_total_HT * taux_tva
+    montant_TTC <- montant_total_HT + montant_TVA
+    montant_NET <- montant_TTC + montant_livraison
+
+    Ecrire "Le montant brut est de : " montant_total_HT
+    Ecrire "La remise est de : " montant_remise
+    Ecrire "Les frais de livraisons sont de : " montant_livraison
+    Ecrire "Le montant total de la TVA est de : " montant_TVA
+    Ecrire "Le montant total TTC est de : " montant_TTC
+    Ecrire "Le montant net à payer (avec livraison) est de : " montant_NET
+FIN
