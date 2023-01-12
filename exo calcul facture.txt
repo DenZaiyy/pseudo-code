@@ -76,7 +76,7 @@ DEBUT
     montant_livraison <- frais_code(code_livraison)
     montant_NET_HT <- montant_total_HT - montant_remise
     montant_TVA <- montant_total_HT * taux_tva
-    montant_TTC <- montant_total_HT + montant_TVA
+    montant_TTC <- montant_NET_HT + montant_TVA
     montant_NET <- montant_TTC + montant_livraison
 
     Ecrire "Le montant brut est de : " montant_total_HT
