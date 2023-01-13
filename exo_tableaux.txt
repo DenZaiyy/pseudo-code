@@ -65,6 +65,17 @@ DEBUT
     FIN POUR
 FIN
 
+Réponse 2:
+Tableau notes[8] en entier
+Variable i en entier
+
+DEBUT
+    POUR (i <- 0 à 8) ALORS
+        Ecrire "Donnez une note"
+        Lire notes[i]
+        i++
+    FIN POUR
+FIN
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
 Exercice 4:
@@ -190,11 +201,12 @@ nombre de valeurs négatives et le nombre de valeurs positives.
 
 Réponse:
 
+tableau nombres[] en numérique
 var quantite en numérique
-var nombre en numérique
+var i en entier
 var nombresPositif en numérique
 var nombresNegatif en numérique
-tableau nombres[] en numériques
+
 
 DEBUT
     nombresPositif <- 0
@@ -205,43 +217,36 @@ DEBUT
 
     POUR(i <- 0 à (quantite-1); i++) ALORS
         Ecrire "Donnez un nombre"
-        Lire nombre
-        nombres[i] <- nombre
-    FIN POUR
-
-    POUR(i <- 0 à nombres[quantite-1]; i++) ALORS
-        SI(nombres[i] < 0) ALORS
-            nombresNegatif <- nombresNegatif + 1
-        SINON SI(nombres[i] > 0) ALORS
-            nombresPositif <- nombresPositif +1
+        nombres[i]
+        SI(nombres[i] > 0) ALORS
+            nombresPositif++
+        SINON SI(nombres[i] < 0) ALORS
+            nombresNegatif++
         FIN SI
     FIN POUR
 
     Ecrire "Le nombre de chiffres négatif est de: " nombresNegatif
     Ecrire "Le nombre de chiffres positif est de: " nombresPositif
+    Ecrire "Il y a " quantite " nombres dans le tableau"
 FIN
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
 Exercice 9:
-Ecrivez un algorithme calculant la somme des valeurs d’un tableau (on suppose que le tableau a été
-préalablement saisi).
+Ecrivez un algorithme calculant la somme des valeurs d’un tableau (on suppose que le tableau a été préalablement saisi).
 
-Réponse: 
+Réponse:
 
 var somme en numérique
 var i en entier
-tableau nombres[]
+tableau nombres[quantite]
 
 DEBUT
-    Ecrire nombres[quantite]
     somme <- 0
 
     POUR (i <- 0 à (quantite-1)) ALORS
-        somme <- somme + nombres[i+1]
+        somme <- somme + nombres[i]
     FIN POUR
-
-    Ecrire "La somme des valeurs du tableau est de: " somme
 FIN
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
@@ -257,3 +262,262 @@ Tableau à constituer :
 11 14 12 11 2 8 11 10
 
 Réponse: 
+
+Tableau tab1[4,8,7,9,1,5,4,6] en entier
+Tableau tab2[7,6,5,2,1,3,7,4] en entier
+Tableau tabFinal[7] en entier
+var i en entier
+
+DEBUT
+    POUR(i <- 0 à 7; i++) ALORS
+        tabFinal[i] <- tab1[i] + tab2[i]
+    FIN POUR
+FIN
+
+Réponse 2:
+Tableaux tab1[], tab2[], tab3[] en entier
+Variable valeur en entier
+Variable i en entier
+
+DEBUT
+
+Ecrire "Donnez nombre"
+Lire valeur
+
+redim tab1[valeur-1]
+redim tab2[valeur-1]
+redim tab3[valeur-1]
+
+POUR (i <- 0 à valeur-1) ALORS
+    tab3[i] <- tab2[i] + tab1[i]
+    i++
+FIN POUR
+FIN
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercice 11:
+
+Toujours à partir de deux tableaux précédemment saisis, écrivez un algorithme qui calcule le schtroumpf
+des deux tableaux. Pour calculer le schtroumpf, il faut multiplier chaque élément du tableau 1 par chaque
+élément du tableau 2, et additionner le tout. Par exemple si l'on a :
+Tableau 1 :
+4 8 7 12
+Tableau 2 :
+3 6
+Le Schtroumpf sera :
+3 * 4 + 3 * 8 + 3 * 7 + 3 * 12 + 6 * 4 + 6 * 8 + 6 * 7 + 6 * 12 = 279
+
+Réponse:
+
+Tableau tab1[4,8,7,12] en entier
+Tableau tab2[3,6] en entier
+var schtroumpf en entier
+var i en entier
+
+DEBUT
+    schtroumpf <- 0
+    POUR(i <- 0 à 3; i++) ALORS
+        schtroumpf <- schtroumpf + (tab2[0] * tab1[i])
+        Ecrire schtroumpf
+    FIN POUR
+
+    POUR(i <- 0 à 3; i++) ALORS
+        schtroumpf <- schtroumpf + (tab2[1] * tab1[i])
+        Ecrire schtroumpf
+    FIN POUR
+FIN
+
+Réponse Corrigé:
+
+Tableaux tab1[], tab2[] en numérique
+Variable valeur1 en entier
+Variable valeur2 en entier
+Variable somme en entier
+Variable i, j en entier
+
+DEBUT
+    Ecrire "Donnez un nombre de valeur pour le tableau 1"
+    Lire valeur1
+
+    Ecrire "Donnez un nombre de valeur pour le tableau 2"
+    Lire valeur2
+
+    redim tab1[valeur1-1]
+    redim tab2[valeur2-1]
+
+    somme <- 0
+
+    POUR (i <- 0 à valeur1-1)
+        POUR (j <- 0 à valeur2-1)
+            somme <- somme (tab1[i] * tab2[j])
+            j++
+        FIN POUR
+        i++
+    FIN POUR
+FIN
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercice 12:
+
+Ecrivez un algorithme qui permette la saisie d’un nombre quelconque de valeurs, sur le principe de l’ex 8.
+Toutes les valeurs doivent être ensuite augmentées de 1, et le nouveau tableau sera affiché à l’écran.
+
+Réponse:
+
+var quantite en numérique
+var nombre en numérique
+tableau nombres[] en numériques
+
+DEBUT
+
+    Ecrire "Donnez un nombre de valeurs a entrer"
+    Lire quantite
+
+    POUR(i <- 0 à (quantite-1); i++) ALORS
+        Ecrire "Donnez un nombre"
+        Lire nombre
+        nombres[i] <- nombre + 1
+    FIN POUR
+
+    Ecrire "Les nouveaux chiffres du tableau sont : " nombres[]
+FIN
+
+Reponse 2:
+Tableau nombres[] en numerique
+Variable valeur en entier
+Variable i en entier
+
+DEBUT
+    Ecrire "Donnez une valeur"
+    Lire valeur
+
+    Redim nombres[valeur-1]
+
+    POUR (i <- 0 à (valeur-1)) ALORS
+        Ecrire "Donnez un nombre"
+        Lire nombres[i]
+        i++
+    FIN POUR
+
+    POUR(i<-0 à (valeur-1)) ALORS
+        nombres[i] <- nombres[i] + 1
+        Ecrire nombres[i]
+        i++
+    FIN POUR
+FIN
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercice 13:
+
+Ecrivez un algorithme permettant, toujours sur le même principe, à l’utilisateur de saisir un nombre
+déterminé de valeurs. Le programme, une fois la saisie terminée, renvoie la plus grande valeur en précisant
+quelle position elle occupe dans le tableau. On prendra soin d’effectuer la saisie dans un premier temps, et
+la recherche de la plus grande valeur du tableau dans un second temps
+
+Réponse 1 :
+
+var quantite en entier
+var nombre en numérique
+var nombrePlusGrand en numérique
+var position en entier
+var i en entier
+tableau nombres[] en numérique
+
+DEBUT
+    Ecrire "Donnez le nombre de saisie à entrer"
+    Lire quantite
+
+    nombrePlusGrand <- 0
+    position <- 0
+
+    Redim nombres[quantite-1]
+
+    POUR(i <- 0 à (quantite-1); i++) ALORS
+        Ecrire "Donnez un nombre"
+        Lire nombres[i]
+        SI(nombres[i] > nombrePlusGrand) ALORS
+            nombrePlusGrand <- nombres[i]
+            position <- i
+        FIN SI
+    FIN POUR
+
+    Ecrire "Le nombre le plus grand des nombres saisie est : " nombrePlusGrand ", a la position du tableau : " position
+FIN
+
+Reponse 1-bis:
+
+var quantite en entier
+var nombre en numérique
+var nombrePlusGrand en numérique
+var position en entier
+var i en entier
+tableau nombres[] en numérique
+
+DEBUT
+    Ecrire "Donnez le nombre de saisie à entrer"
+    Lire quantite
+
+    nombrePlusGrand <- 0
+    position <- 0
+
+    Redim nombres[quantite-1]
+
+    POUR(i <- 0 à (quantite-1); i++) ALORS
+        Ecrire "Donnez un nombre"
+        Lire nombres[i]
+    FIN POUR
+
+    POUR(i <- 0 à (quantite-1); i++) ALORS
+        SI(nombres[i] > nombrePlusGrand)ALORS
+            nombrePlusGrand <- nombres[i]
+            position <- i
+        FIN SI
+    FIN POUR
+
+    Ecrire "Le nombre le plus grand des nombres saisie est : " nombrePlusGrand ", a la position du tableau : " position
+FIN
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercice 14:
+
+Toujours et encore sur le même principe, écrivez un algorithme permettant, à l’utilisateur de saisir les
+notes d'une classe. Le programme, une fois la saisie terminée, renvoie le nombre de ces notes supérieures
+à la moyenne de la classe.
+
+tableau notes[] en entier
+var quantite en entier
+var notesSupp en entier
+var moyenne en numerique
+var somme en numerique
+var i en entier
+
+DEBUT
+    Ecrire "Donnez le nombre de notes à saisir"
+    Lire quantite
+
+    somme <- 0
+    notesSupp <- 0
+
+    Redim notes[quantite-1]
+
+    POUR(i <- 0 à (quantite-1)) ALORS
+        Ecrire "Donnez la note"
+        Lire notes[i]
+        somme <- somme + notes[i]
+        i++
+    FIN POUR
+
+    moyenne <- somme / quantite
+
+    POUR(i <- 0 à (quantite-1)) ALORS
+        SI(notes[i] > moyenne) ALORS
+            notesSupp++
+        FIN SI
+        i++
+    FIN POUR
+    
+    Ecrire "Il y a " notesSupp " notes qui sont supérieur à la moyenne de " moyenne
+FIN
